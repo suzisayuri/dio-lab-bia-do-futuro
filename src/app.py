@@ -9,11 +9,20 @@ st.markdown(
     """
     <style>
     :root {
-        --accent: #10B981;
-        --gold: #D4AF37;
+        --accent: #DC2626;
+        --gold: #8B1A1A;
+    }
+    .busola-wordmark {
+        text-align: center;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: #8A8A8A;
+        margin-bottom: 6px;
     }
     [data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #131B2E 0%, #0E1524 100%);
+        background: linear-gradient(180deg, #1E1E1E 0%, #141414 100%);
         border-right: 1px solid rgba(255,255,255,0.06);
     }
     .busola-client-card {
@@ -61,8 +70,8 @@ st.markdown(
         align-items: center;
         justify-content: center;
         font-size: 1.6rem;
-        background: linear-gradient(135deg, var(--accent), #059669);
-        box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35);
+        background: linear-gradient(135deg, var(--accent), #7F1D1D);
+        box-shadow: 0 6px 18px rgba(220, 38, 38, 0.35);
         flex-shrink: 0;
     }
     .busola-hero h1 {
@@ -79,7 +88,7 @@ st.markdown(
         border: none;
         height: 1px;
         margin: 18px 0 22px 0;
-        background: linear-gradient(90deg, rgba(16, 185, 129, 0.6), rgba(255, 255, 255, 0));
+        background: linear-gradient(90deg, rgba(220, 38, 38, 0.6), rgba(255, 255, 255, 0));
     }
     [data-testid="stChatMessage"] {
         border-radius: 16px;
@@ -111,12 +120,23 @@ with st.sidebar:
         """,
         unsafe_allow_html=True,
     )
-    st.metric("Colchão atual", f"{resumo['meses_cobertos']} meses", f"meta: {resumo['meses_desejado']} meses")
+    st.metric(
+        "Colchão atual",
+        f"{resumo['meses_cobertos']} meses",
+        f"meta: {resumo['meses_desejado']} meses",
+        delta_color="off",
+    )
     st.progress(min(resumo["meses_cobertos"] / resumo["meses_desejado"], 1.0))
-    st.metric("Falta para a meta", f"R$ {resumo['valor_faltante']:.2f}", f"até {resumo['meta_prazo']}")
+    st.metric(
+        "Falta para a meta",
+        f"R$ {resumo['valor_faltante']:.2f}",
+        f"até {resumo['meta_prazo']}",
+        delta_color="off",
+    )
 
 st.markdown(
     f"""
+    <div class="busola-wordmark">Bank of Far Far Far Away</div>
     <div class="busola-hero">
         <div class="busola-badge">🧭</div>
         <div>
