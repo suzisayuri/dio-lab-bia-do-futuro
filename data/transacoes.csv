@@ -1,4 +1,27 @@
 data,descricao,categoria,valor,tipo
+2025-08-01,Salário,receita,5000.00,entrada
+2025-08-02,Aluguel,moradia,1200.00,saida
+2025-08-03,Supermercado,alimentacao,430.00,saida
+2025-08-05,Netflix,lazer,55.90,saida
+2025-08-07,Farmácia,saude,75.00,saida
+2025-08-10,Restaurante,alimentacao,140.00,saida
+2025-08-12,Uber,transporte,52.00,saida
+2025-08-15,Conta de Luz,moradia,175.00,saida
+2025-08-18,Curso online de UX Design,educacao,120.00,saida
+2025-08-20,Academia,saude,99.00,saida
+2025-08-25,Combustível,transporte,230.00,saida
+2025-09-01,Salário,receita,5000.00,entrada
+2025-09-02,Aluguel,moradia,1200.00,saida
+2025-09-03,Supermercado,alimentacao,470.00,saida
+2025-09-05,Netflix,lazer,55.90,saida
+2025-09-08,Farmácia,saude,60.00,saida
+2025-09-10,Restaurante,alimentacao,150.00,saida
+2025-09-12,Uber,transporte,48.00,saida
+2025-09-15,Conta de Luz,moradia,190.00,saida
+2025-09-18,Curso online de UX Design,educacao,120.00,saida
+2025-09-20,Academia,saude,99.00,saida
+2025-09-22,Assinatura Figma,educacao,45.00,saida
+2025-09-25,Combustível,transporte,240.00,saida
 2025-10-01,Salário,receita,5000.00,entrada
 2025-10-02,Aluguel,moradia,1200.00,saida
 2025-10-03,Supermercado,alimentacao,450.00,saida
@@ -7,5 +30,7 @@ data,descricao,categoria,valor,tipo
 2025-10-10,Restaurante,alimentacao,120.00,saida
 2025-10-12,Uber,transporte,45.00,saida
 2025-10-15,Conta de Luz,moradia,180.00,saida
+2025-10-18,Curso online de UX Design,educacao,120.00,saida
 2025-10-20,Academia,saude,99.00,saida
+2025-10-22,Assinatura Figma,educacao,45.00,saida
 2025-10-25,Combustível,transporte,250.00,saida

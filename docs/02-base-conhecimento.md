@@ -6,10 +6,10 @@ Descreva se usou os arquivos da pasta `data`, por exemplo:
 
 | Arquivo | Formato | Utilização no Agente |
 |---------|---------|---------------------|
-| `historico_atendimento.csv` | CSV | Contextualizar interações anteriores |
-| `perfil_investidor.json` | JSON | Personalizar recomendações |
-| `produtos_financeiros.json` | JSON | Sugerir produtos adequados ao perfil |
-| `transacoes.csv` | CSV | Analisar padrão de gastos do cliente |
+| `historico_atendimento.csv` | CSV | Contextualizar interações anteriores sobre a transição |
+| `perfil_investidor.json` | JSON | Calcular o colchão de transição (meta, prazo, reserva atual) |
+| `produtos_financeiros.json` | JSON | Descrever categorias de baixo risco para guardar a reserva |
+| `transacoes.csv` | CSV | Calcular despesas essenciais e apontar gastos cortáveis |
 
 > [!TIP]
 > **Quer um dataset mais robusto?** Você pode utilizar datasets públicos do [Hugging Face](https://huggingface.co/datasets) relacionados a finanças, desde que sejam adequados ao contexto do desafio.
@@ -20,7 +20,7 @@ Descreva se usou os arquivos da pasta `data`, por exemplo:
 
 > Você modificou ou expandiu os dados mockados? Descreva aqui.
 
-[Sua descrição aqui]
+Adicionei o campo `transicao_carreira` em `perfil_investidor.json` (carreira atual, carreira desejada, prazo e meses de colchão desejado) e renomeei a meta principal para refletir isso. Incluí um atendimento sobre transição em `historico_atendimento.csv`. Expandi `transacoes.csv` de 1 para 3 meses (ago–out/2025) e adicionei a categoria `educacao` (curso de UX Design, assinatura Figma), usando como referência de categorias reais o dataset público [DoDataThings/us-bank-transaction-categories-v2](https://huggingface.co/datasets/DoDataThings/us-bank-transaction-categories-v2) (Hugging Face, MIT).
 
 ---
 
@@ -29,12 +29,12 @@ Descreva se usou os arquivos da pasta `data`, por exemplo:
 ### Como os dados são carregados?
 > Descreva como seu agente acessa a base de conhecimento.
 
-[ex: Os JSON/CSV são carregados no início da sessão e incluídos no contexto do prompt]
+Os arquivos são lidos do disco uma vez no início da sessão do Streamlit (cache em memória) e não são relidos a cada pergunta.
 
 ### Como os dados são usados no prompt?
 > Os dados vão no system prompt? São consultados dinamicamente?
 
-[Sua descrição aqui]
+O app pré-calcula o resumo financeiro (despesas médias, meses de colchão cobertos/faltando) a partir de `transacoes.csv` e `perfil_investidor.json`, e injeta esse resumo — não os arquivos brutos — no system prompt a cada pergunta.
 
 ---
 
@@ -46,10 +46,11 @@ Descreva se usou os arquivos da pasta `data`, por exemplo:
 Dados do Cliente:
 - Nome: João Silva
 - Perfil: Moderado
-- Saldo disponível: R$ 5.000
+- Carreira atual: Analista de Sistemas → desejada: UX Designer (prazo: 2026-06)
+- Reserva atual: R$ 10.000 | Meta: R$ 15.000 | Colchão desejado: 6 meses
 
-Últimas transações:
-- 01/11: Supermercado - R$ 450
-- 03/11: Streaming - R$ 55
-...
+Resumo financeiro (últimos 3 meses):
+- Despesa essencial média/mês: R$ 2.150
+- Colchão atual: 4,6 meses cobertos
+- Gasto cortável identificado: Academia (R$ 99/mês), Assinatura Figma (R$ 45/mês)
 ```
